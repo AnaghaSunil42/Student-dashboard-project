@@ -1,62 +1,161 @@
-AI Student Study Tracker System
+# 🎓 AI Student Study Tracking System
 
-The AI Student Study Tracker System is an intelligent data-driven application designed to monitor, analyze, and improve students’ study habits. It enables students to log their study sessions and receive insights based on their performance, while administrators can manage data, monitor system activity, and retrain machine learning models.
+An AI-powered student study tracking web application built with Streamlit and KMeans Clustering. The system analyzes student academic behavior and provides personalized study recommendations based on their performance patterns.
 
-This system combines data analytics, machine learning, and interactive dashboards to provide meaningful insights into student behavior, helping users make better learning decisions and improve overall productivity.
+---
 
-Project Structure
+## 🚀 Features
+
+### 🔐 Authentication
+- Role-based login system for Students and Admins
+- Secure password hashing with SHA-256
+- Register using Student ID or Admin ID
+
+### 🎓 Student Panel
+- Personalized study recommendations based on cluster group
+- Weekly study schedule and optimal study times
+- Study session logging with date, subject, duration, distractions and quiz score
+- Study progress visualization over time
+- AI Study Assistant chatbot for study related queries
+
+### ⚙️ Admin Panel
+- System metrics — active students, study sessions, avg quiz score and dataset size
+- CSV dataset upload and management
+- Quick Retrain and Full Retrain model retraining options
+- Student behavior cluster visualization with scatter plots and radar charts
+- Dynamic cluster labeling based on Final Exam Score ranking
+- Add new students with automatic cluster assignment
+- Analytics dashboard with EDA charts and correlation analysis
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| Streamlit | Frontend and UI |
+| Scikit-learn | KMeans Clustering and StandardScaler |
+| Pandas and NumPy | Data processing |
+| Plotly | Interactive charts and visualizations |
+| Hashlib SHA-256 | Secure password hashing |
+| JSON and CSV | Data storage |
+
+---
+
+## 📁 Project Structure
 project/
-├── app.py                        # Authentication + role-based navigation
-├── cluster_config.json           # Cluster configuration storage
-├── Study_Track_AI_Project.csv    # Main dataset
-├── student_logs.csv              # Student session logs
-├── users.json                    # Registered users
-
+├── app.py
+├── cluster_config.json
+├── Study_Track_AI_Project.csv
+├── student_logs.csv
+├── users.json
 └── pages/
-    ├── 0_Admin_Dashboard.py      # System metrics + retrain model
-    ├── 0_Study_Log_Sessions.py   # Student study log entry + history
-    ├── 1_Student_Interface.py    # Recommendations + chatbot
-    ├── 2_Admin_Panel.py          # Clustering + student management
-    └── 3_Analytics_Dashboard.py  # EDA charts + correlation analysis
-Key Features
-Authentication & Role-Based Access
-Secure login system for Students and Admins with controlled navigation.
-Study Session Logging
-Students can record daily study sessions and track their history.
-Admin Dashboard
-Displays system metrics such as total sessions, active users, and model performance.
-Machine Learning Integration
-Uses clustering (K-Means) to analyze student behavior and group performance levels.
-Student Recommendations & Chatbot
-Provides personalized suggestions and interactive support.
-Analytics Dashboard
-Includes EDA charts, correlation analysis, and performance visualization.
-Technologies Used
-Frontend/UI: Streamlit
-Backend: Python
-Data Handling: Pandas
-Visualization: Plotly
-Machine Learning: Scikit-learn (K-Means Clustering)
-Storage: CSV, JSON
-Workflow
-User registers and logs in through app.py
-Role-based navigation directs users to appropriate dashboards
-Students log study sessions via Study_Log_Sessions
-Data is stored in CSV files and processed
-ML model performs clustering and analysis
-Insights are displayed through dashboards and charts
-Advantages
-Simple and user-friendly interface
-Data-driven insights for better study planning
-Role-based system for better control
-Scalable and modular architecture
-Real-time analytics and visualization
-Future Enhancements
-Deployment on cloud platforms
-Advanced ML models for prediction
-Mobile app integration
-Real-time notifications and reminders
-Improved chatbot with NLP capabilities
-Conclusion
+├── 0_Admin_Dashboard.py
+├── 0_Study_Log_Sessions.py
+├── 1_Student_Interface.py
+├── 2_Admin_Panel.py
+└── 3_Analytics_Dashboard.py
+---
 
-The AI Student Study Tracker System is a powerful tool that transforms traditional study tracking into an intelligent and interactive experience. By combining analytics, machine learning, and visualization, it helps students improve performance and enables administrators to make informed decisions based on data.
+## ⚙️ Installation
+
+1. Clone the repository
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+```
+
+2. Install dependencies
+```bash
+pip install streamlit pandas numpy scikit-learn plotly
+```
+
+3. Run the application
+```bash
+streamlit run app.py
+```
+
+---
+
+## 👤 How to Use
+
+### Student
+1. Register using your Student ID from the dataset
+2. Login with your Student ID and password
+3. View your personalized study recommendations
+4. Log your daily study sessions
+5. Track your progress over time
+6. Ask the AI Study Assistant for study tips
+
+### Admin
+1. Register using any Admin ID
+2. Login with your Admin ID and password
+3. View system metrics and student activity
+4. Upload new datasets and retrain the model
+5. Add new students and view their cluster assignment
+6. Explore analytics and cluster insights
+
+---
+
+## 🤖 ML Model
+
+- Algorithm — KMeans Clustering
+- Features — Study Hours per Week, Attendance Percentage, Assignments Completed, Mock Test Score, Final Exam Score
+- Normalization — StandardScaler
+- Cluster Labels dynamically assigned based on average Final Exam Score ranking
+
+| Rank | Cluster Label |
+|---|---|
+| 1 | Needs Improvement |
+| 2 | Low Engagement |
+| 3 | Average Learner |
+| 4 | Focused Studier |
+| 5 | Consistent Performer |
+| 6 | Good Performer |
+| 7 | High Achiever |
+| 8 | Top Performer |
+| 9 | Outstanding Student |
+| 10 | Elite Performer |
+
+---
+
+## 📊 Dataset
+
+| Column | Description |
+|---|---|
+| Student_ID | Unique student identifier |
+| Gender | Student gender |
+| Age | Student age |
+| Study_Hours_per_Week | Weekly study hours |
+| Attendance_Percentage | Class attendance percentage |
+| Assignments_Completed | Number of assignments completed |
+| Previous_Grade | Previous academic grade |
+| Internet_Access | Internet availability |
+| Mock_Test_Score | Mock test score |
+| Final_Exam_Score | Final exam score |
+| Performance | Overall performance label |
+
+---
+
+## 📌 Notes
+
+- Make sure Study_Track_AI_Project.csv is present in the root directory before running
+- student_logs.csv and users.json are auto created on first run
+- cluster_config.json is auto generated when the admin runs the clustering model
+
+---
+
+## 🔮 Future Scope
+
+- Upgrade rule-based chatbot to an LLM powered AI assistant
+- Add automated email and SMS performance alerts
+- Integrate with real college databases and LMS platforms
+- Introduce a parent login module for monitoring student progress
+- Explore advanced clustering algorithms like DBSCAN and Hierarchical Clustering
+- Develop a mobile friendly version on Streamlit Cloud
+
+---
+
+## 📄 License
+
+This project is for educational purposes.
